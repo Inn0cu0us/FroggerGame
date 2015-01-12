@@ -1,23 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(Rigidbody))]
 public class DriftMovement : MonoBehaviour {
 
     public float speed = 5f;
     public Vector3 direction = Vector3.right;
 
-    Rigidbody body;
-
     Vector3 movement;
     void Awake()
     {
-        body = GetComponent<Rigidbody>();
+
     }
-	
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            movement = direction * speed * Time.deltaTime;
+            other.transform.position += movement;
+        }
+    }
+
 	void FixedUpdate () 
     {
         movement = direction * speed * Time.deltaTime;
-        body.MovePosition(body.position + movement);
+        transform.position += movement;
 	}
 }

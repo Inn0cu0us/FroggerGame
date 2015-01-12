@@ -68,6 +68,7 @@ TextureImporter:
     21300126: froggerSprites_63
     21300128: froggerSprites_64
     21300130: froggerSprites_65
+    21300132: froggerSprites_60
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -103,7 +104,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 40
+  spritePixelsToUnits: 34
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
@@ -123,9 +124,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 358
+        y: 360
         width: 399
-        height: 54
+        height: 52
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -142,20 +143,20 @@ TextureImporter:
     - name: largeLogSprite
       rect:
         serializedVersion: 2
-        x: 7
+        x: 6
         y: 280
-        width: 178
-        height: 22
+        width: 180
+        height: 21
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: mediumLogSprite
       rect:
         serializedVersion: 2
-        x: 7
-        y: 248
-        width: 117
-        height: 22
+        x: 6
+        y: 246
+        width: 120
+        height: 25
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,9 +164,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 7
-        y: 216
+        y: 213
         width: 85
-        height: 21
+        height: 25
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,18 +204,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 10
-        y: 180
+        y: 181
         width: 28
-        height: 20
+        height: 19
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: WhiteCarSprite
       rect:
         serializedVersion: 2
-        x: 46
+        x: 47
         y: 178
-        width: 28
+        width: 27
         height: 24
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -224,7 +225,7 @@ TextureImporter:
         serializedVersion: 2
         x: 82
         y: 177
-        width: 23
+        width: 24
         height: 26
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -252,9 +253,9 @@ TextureImporter:
     - name: TractorSprite
       rect:
         serializedVersion: 2
-        x: 11
+        x: 10
         y: 145
-        width: 24
+        width: 25
         height: 21
       alignment: 0
       pivot: {x: .5, y: .5}
@@ -284,8 +285,8 @@ TextureImporter:
         serializedVersion: 2
         x: 106
         y: 147
-        width: 46
-        height: 18
+        width: 45
+        height: 17
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,20 +353,20 @@ TextureImporter:
     - name: froggerWalkNorth1Sprite
       rect:
         serializedVersion: 2
-        x: 12
-        y: 81
-        width: 23
-        height: 17
+        x: 6
+        y: 71
+        width: 34
+        height: 34
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: froggerWalkNorth2Sprite
       rect:
         serializedVersion: 2
-        x: 46
-        y: 76
-        width: 22
-        height: 25
+        x: 40
+        y: 71
+        width: 34
+        height: 34
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -706,6 +707,16 @@ TextureImporter:
         y: 8
         width: 7
         height: 10
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: froggerSprites_60
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 172
+        width: 2
+        height: 7
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -3,34 +3,58 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
-    public float speed = 5f;
-    Vector3 movement;
+    public AudioClip HopSound;
+    AudioSource playerAudio;
     Animator anim;
-    Rigidbody playerBody;
 
     void Awake()
     {
         anim = GetComponent<Animator>();
-        playerBody = GetComponent<Rigidbody>();
+        playerAudio = GetComponent<AudioSource>();
     }
     
-	void FixedUpdate () 
+	void Update () 
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
+        KeyCode selectedKeycode = GetSelectedKeyCode();
 
-        Move(h, v);
-        Rotate(h, v);
+        switch (selectedKeycode)
+        {
+            case KeyCode.W: transform.eulerAngles = new Vector3(0, 0, 0); Move(Vector3.up); break;
+            case KeyCode.S: transform.eulerAngles = new Vector3(0, 0, 180); Move(-Vector3.up); break;
+            case KeyCode.A: transform.eulerAngles = new Vector3(0, 0, 90); Move(-Vector3.right); break;
+            case KeyCode.D: transform.eulerAngles = new Vector3(0, 0, 270); Move(Vector3.right); break;
+            default:  break;
+        }
+      //  Move(h, v);
+      //  Rotate(h, v);
 	}
 
-    void Move(float h, float v)
+    void Move(Vector3 movement)
     {
-        movement.Set(h, v, 0f);
-        movement = movement * speed * Time.deltaTime;
-        bool isWalking = !(movement == Vector3.zero);
-        anim.SetBool("IsWalking", isWalking);
-        
-        playerBody.MovePosition(transform.position + movement);
+        playerAudio.clip = HopSound;
+        playerAudio.Play();
+        anim.SetTrigger("Walk");
+        transform.position = transform.position + movement;
+    }
+
+    void MoveUp()
+    {
+        transform.position = transform.position + Vector3.up;
+    }
+
+    void MoveRight()
+    {
+        transform.position = transform.position + Vector3.right;
+    }
+
+    void MoveLeft()
+    {
+        transform.position = transform.position - Vector3.right;
+    }
+
+    void MoveDown()
+    {
+        transform.position = transform.position - Vector3.up;
     }
 
     void Rotate(float h, float v)
@@ -52,4 +76,46 @@ public class PlayerMovement : MonoBehaviour {
             transform.eulerAngles = new Vector3(0, 0, 180);
         }
     }
+
+    KeyCode GetSelectedKeyCode()
+    {
+        if (Input.GetKeyDown(KeyCode.None))
+        {
+            return KeyCode.None;
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                return KeyCode.W;
+            }
+            else
+            {
+                if (Input.GetKeyDown(KeyCode.S))
+                {
+                    return KeyCode.S;
+                }
+                else
+                {
+                    if (Input.GetKeyDown(KeyCode.D))
+                    {
+                        return KeyCode.D;
+                    }
+                    else
+                    {
+                        if (Input.GetKeyDown(KeyCode.A))
+                        {
+                            return KeyCode.A;
+                        }
+                        else
+                        {
+                            return KeyCode.None;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+
 }

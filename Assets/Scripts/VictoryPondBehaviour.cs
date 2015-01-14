@@ -5,6 +5,8 @@ public class VictoryPondBehaviour : MonoBehaviour {
 
     public GameObject RespawnLocation;
     public GameObject FroggerClone;
+
+    public AudioClip VictoryPondSound;
 	// Use this for initialization
 	void Start () {
 	
@@ -22,6 +24,8 @@ public class VictoryPondBehaviour : MonoBehaviour {
             other.transform.position = RespawnLocation.transform.position;
             gameObject.SetActive(false);
             GameObject.Instantiate(FroggerClone, transform.position, Quaternion.identity);
+            other.audio.clip = VictoryPondSound;
+            other.audio.Play();
         }
     }
 }

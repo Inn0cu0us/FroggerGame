@@ -6,11 +6,15 @@ public class PlayerMovement : MonoBehaviour {
     public AudioClip HopSound;
     AudioSource playerAudio;
     Animator anim;
-
+    int FloorMask;
+    PlayerDeath playerDeath;
+    
     void Awake()
     {
         anim = GetComponent<Animator>();
         playerAudio = GetComponent<AudioSource>();
+        FloorMask = LayerMask.GetMask("Floor");
+        playerDeath = GetComponent<PlayerDeath>();
     }
     
 	void Update () 
@@ -25,8 +29,6 @@ public class PlayerMovement : MonoBehaviour {
             case KeyCode.D: transform.eulerAngles = new Vector3(0, 0, 270); Move(Vector3.right); break;
             default:  break;
         }
-      //  Move(h, v);
-      //  Rotate(h, v);
 	}
 
     void Move(Vector3 movement)
@@ -35,26 +37,16 @@ public class PlayerMovement : MonoBehaviour {
         playerAudio.Play();
         anim.SetTrigger("Walk");
         transform.position = transform.position + movement;
+        if (!LandedSomewhereSafe())
+        {
+            playerDeath.Die();
+        }        
     }
 
-    void MoveUp()
+    bool LandedSomewhereSafe()
     {
-        transform.position = transform.position + Vector3.up;
-    }
-
-    void MoveRight()
-    {
-        transform.position = transform.position + Vector3.right;
-    }
-
-    void MoveLeft()
-    {
-        transform.position = transform.position - Vector3.right;
-    }
-
-    void MoveDown()
-    {
-        transform.position = transform.position - Vector3.up;
+        var hit = Physics2D.Raycast(transform.position, Vector3.forward, 0.5f, FloorMask);
+        return (hit.collider != null);
     }
 
     void Rotate(float h, float v)

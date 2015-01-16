@@ -10,6 +10,7 @@ public class PlayerDeath : MonoBehaviour {
     
     GameObject player;
     PlayerMovement playerMovement;
+    GameManager manager;
 
     bool isDead = false;
 	
@@ -18,6 +19,8 @@ public class PlayerDeath : MonoBehaviour {
     {
         playerAudio = GetComponent<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
+        GameObject controller = GameObject.FindGameObjectWithTag("GameController");
+        manager = controller.GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -25,6 +28,7 @@ public class PlayerDeath : MonoBehaviour {
     {
         if (isDead)
         {
+            manager.LoseLife();
             Respawn();
         }
 	}

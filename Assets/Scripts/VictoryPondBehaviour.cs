@@ -5,11 +5,17 @@ public class VictoryPondBehaviour : MonoBehaviour {
 
     public GameObject RespawnLocation;
     public GameObject FroggerClone;
+    public int PointValue = 100;
 
     public AudioClip VictoryPondSound;
+
+    GameManager manager;
+
 	// Use this for initialization
-	void Start () {
-	
+	void Awake() 
+    {
+        GameObject controller = GameObject.FindGameObjectWithTag("GameController");
+        manager = controller.GetComponent<GameManager>();
 	}
 	
 	// Update is called once per frame
@@ -26,6 +32,7 @@ public class VictoryPondBehaviour : MonoBehaviour {
             GameObject.Instantiate(FroggerClone, transform.position, Quaternion.identity);
             other.audio.clip = VictoryPondSound;
             other.audio.Play();
+            manager.PondReached();
         }
     }
 }

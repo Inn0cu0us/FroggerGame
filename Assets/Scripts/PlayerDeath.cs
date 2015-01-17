@@ -9,7 +9,6 @@ public class PlayerDeath : MonoBehaviour {
     public GameObject RespawnLocation;
     
     GameObject player;
-    PlayerMovement playerMovement;
     GameManager manager;
 
     bool isDead = false;

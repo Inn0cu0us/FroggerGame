@@ -8,7 +8,12 @@ public class PlayerMovement : MonoBehaviour {
     Animator anim;
     int FloorMask;
     PlayerDeath playerDeath;
-    
+
+    FroggerMovement Up = new FroggerMovement() { direction = Vector3.up, rotation = new Vector3(0, 0, 0) };
+    FroggerMovement Down = new FroggerMovement() { direction = -Vector3.up, rotation = new Vector3(0, 0, 180) };
+    FroggerMovement Left = new FroggerMovement() { direction = -Vector3.right, rotation = new Vector3(0, 0, 90) };
+    FroggerMovement Right = new FroggerMovement() { direction = Vector3.right, rotation = new Vector3(0, 0, 270) };
+
     void Awake()
     {
         anim = GetComponent<Animator>();
@@ -19,24 +24,48 @@ public class PlayerMovement : MonoBehaviour {
     
 	void Update () 
     {
-        KeyCode selectedKeycode = GetSelectedKeyCode();
-
-        switch (selectedKeycode)
         {
-            case KeyCode.W: transform.eulerAngles = new Vector3(0, 0, 0); Move(Vector3.up); break;
-            case KeyCode.S: transform.eulerAngles = new Vector3(0, 0, 180); Move(-Vector3.up); break;
-            case KeyCode.A: transform.eulerAngles = new Vector3(0, 0, 90); Move(-Vector3.right); break;
-            case KeyCode.D: transform.eulerAngles = new Vector3(0, 0, 270); Move(Vector3.right); break;
-            default:  break;
+            if (Input.GetButtonDown("Up"))
+            {
+                Move(Up);
+            }
+            else
+            {
+                if (Input.GetButtonDown("Down"))
+                {
+                    Move(Down);
+                }
+                else
+                {
+                    if (Input.GetButtonDown("Right"))
+                    {
+                        Move(Right);
+                    }
+                    else
+                    {
+                        if (Input.GetButtonDown("Left"))
+                        {
+                            Move(Left);
+                        }
+                    }
+                }
+            }
         }
+        
 	}
 
-    void Move(Vector3 movement)
+    void FixedUpdate()
+    {
+        
+    }
+
+    void Move(FroggerMovement movement)
     {
         playerAudio.clip = HopSound;
         playerAudio.Play();
         anim.SetTrigger("Walk");
-        transform.position = transform.position + movement;
+        transform.position = transform.position + movement.direction;
+        transform.eulerAngles = movement.rotation;
         if (!LandedSomewhereSafe())
         {
             playerDeath.Die();
@@ -49,65 +78,11 @@ public class PlayerMovement : MonoBehaviour {
         return (hit.collider != null);
     }
 
-    void Rotate(float h, float v)
+    private class FroggerMovement
     {
-        if (h > 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 270);
-        }
-        if (h < 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 90);
-        }
-        if (v > 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-        }
-        if (v < 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 180);
-        }
+        public Vector3 direction;
+        public Vector3 rotation;
     }
 
-    KeyCode GetSelectedKeyCode()
-    {
-        if (Input.GetKeyDown(KeyCode.None))
-        {
-            return KeyCode.None;
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.W))
-            {
-                return KeyCode.W;
-            }
-            else
-            {
-                if (Input.GetKeyDown(KeyCode.S))
-                {
-                    return KeyCode.S;
-                }
-                else
-                {
-                    if (Input.GetKeyDown(KeyCode.D))
-                    {
-                        return KeyCode.D;
-                    }
-                    else
-                    {
-                        if (Input.GetKeyDown(KeyCode.A))
-                        {
-                            return KeyCode.A;
-                        }
-                        else
-                        {
-                            return KeyCode.None;
-                        }
-
-                    }
-                }
-            }
-        }
-    }
 
 }

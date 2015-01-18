@@ -42,7 +42,7 @@ TextureImporter:
     21300074: froggerSprites_37
     21300076: TurtleSinkingSprite
     21300078: froggerSprites_39
-    21300080: TurtleSunkSprite
+    21300080: TurtleAlmostSunkSprite
     21300082: froggerSprites_41
     21300084: froggerSprites_42
     21300086: froggerSprites_43
@@ -63,12 +63,13 @@ TextureImporter:
     21300116: froggerSprites_58
     21300118: froggerSprites_59
     21300120: froggerSprites_60
-    21300122: froggerSprites_61
+    21300122: TurtleSunk
     21300124: froggerSprites_62
     21300126: froggerSprites_63
     21300128: froggerSprites_64
     21300130: froggerSprites_65
     21300132: froggerSprites_60
+    21300134: froggerSprites_61
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -440,17 +441,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: froggerSprites_39
-      rect:
-        serializedVersion: 2
-        x: 154
-        y: 53
-        width: 10
-        height: 6
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: TurtleSunkSprite
+    - name: TurtleAlmostSunkSprite
       rect:
         serializedVersion: 2
         x: 179
@@ -497,16 +488,6 @@ TextureImporter:
         y: 34
         width: 28
         height: 24
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: froggerSprites_45
-      rect:
-        serializedVersion: 2
-        x: 147
-        y: 38
-        width: 16
-        height: 6
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -717,6 +698,16 @@ TextureImporter:
         y: 172
         width: 2
         height: 7
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: TurtleSunk
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 39
+        width: 25
+        height: 20
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}

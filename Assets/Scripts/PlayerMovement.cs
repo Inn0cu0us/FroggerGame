@@ -56,7 +56,10 @@ public class PlayerMovement : MonoBehaviour {
 
     void FixedUpdate()
     {
-        
+        if (!IsSomewhereSafe())
+        {
+            playerDeath.Die();
+        }
     }
 
     void Move(FroggerMovement movement)
@@ -65,14 +68,10 @@ public class PlayerMovement : MonoBehaviour {
         playerAudio.Play();
         anim.SetTrigger("Walk");
         transform.position = transform.position + movement.direction;
-        transform.eulerAngles = movement.rotation;
-        if (!LandedSomewhereSafe())
-        {
-            playerDeath.Die();
-        }        
+        transform.eulerAngles = movement.rotation;                
     }
 
-    bool LandedSomewhereSafe()
+    bool IsSomewhereSafe()
     {
         var hit = Physics2D.Raycast(transform.position, Vector3.forward, 0.5f, FloorMask);
         return (hit.collider != null);

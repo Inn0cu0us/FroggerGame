@@ -8,7 +8,6 @@ public class PauseManager : MonoBehaviour {
     Canvas PauseCanvas;
     public AudioClip PauseClip;
 
-    Animator anim;
 	// Use this for initialization
 	void Start () {
         PauseAudio = GetComponent<AudioSource>();
@@ -18,8 +17,7 @@ public class PauseManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	    if (Input.GetButtonDown("Submit"))
-        {
-            
+        {            
             PauseAudio.clip = PauseClip;
             PauseAudio.Play();
             isPaused = !isPaused;

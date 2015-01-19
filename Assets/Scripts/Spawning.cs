@@ -30,7 +30,7 @@ public class Spawning : MonoBehaviour {
             if (movement != null)
             {
                 movement.direction = Direction;
-                movement.speed = speed;
+                movement.speed = speed * GameManager.DifficultyMultiplier;
             }
         }
 	}

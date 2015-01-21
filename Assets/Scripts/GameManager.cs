@@ -10,19 +10,23 @@ public class GameManager : MonoBehaviour {
     public static float DifficultyMultiplier = 1.0f;
     public static int ScoreMultiplier = 2;
     public static int PondPointValue = 100;
+    public static int Level = 1;
 
 
     public Canvas NextLevelCanvas;
     public Text ScoreText;
     public Text LivesRemainingText;
+    public Text LevelText;
     PlayerMovement playerMovement;
     int NumberOfPondsReached;
     bool ReadyForNextLevel = false;
 	void Awake() 
     {
         NumberOfPondsReached = 0;
+        
         ScoreText.text = string.Format("SCORE\n{0}", Score);
         LivesRemainingText.text = string.Format("x{0}", LivesRemaining);
+        LevelText.text = string.Format("LEVEL\n{0}", Level);
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
@@ -37,7 +41,7 @@ public class GameManager : MonoBehaviour {
            {
                NextLevelCanvas.enabled = false;
                ReadyForNextLevel = false;
-               StartCoroutine(RestartLevel());
+               StartCoroutine(AdvanceLevel());
            }
        }
 	}
@@ -70,14 +74,14 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    public IEnumerator RestartLevel()
+    public IEnumerator AdvanceLevel()
     {
         yield return new WaitForEndOfFrame();
+        LevelText.text = string.Format("LEVEL\n{0}", Level++);
         playerMovement.enabled = true;
         DifficultyMultiplier += 0.1f;
         NumberOfPondsReached = 0;
         PondPointValue *= ScoreMultiplier;
-        Application.LoadLevel(Application.loadedLevel);
-        
+        Application.LoadLevel(Application.loadedLevel);        
     }
 }

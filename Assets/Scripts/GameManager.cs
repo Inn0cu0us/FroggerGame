@@ -72,11 +72,12 @@ public class GameManager : MonoBehaviour {
 
     public IEnumerator RestartLevel()
     {
-        yield return new WaitForSeconds(0.5f); 
+        yield return new WaitForEndOfFrame();
         playerMovement.enabled = true;
         DifficultyMultiplier += 0.1f;
         NumberOfPondsReached = 0;
         PondPointValue *= ScoreMultiplier;
         Application.LoadLevel(Application.loadedLevel);
+        
     }
 }

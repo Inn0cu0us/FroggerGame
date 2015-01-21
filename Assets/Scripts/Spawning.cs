@@ -12,7 +12,9 @@ public class Spawning : MonoBehaviour {
     float timer;
     float speed;
     // Use this for initialization
-	void Start () {
+	void Start () 
+    {
+        IntervalBetweenSpawns *= (1 / GameManager.DifficultyMultiplier);
         timer = IntervalBetweenSpawns;
         speed = Random.Range(MinSpeed, MaxSpeed);
 	}

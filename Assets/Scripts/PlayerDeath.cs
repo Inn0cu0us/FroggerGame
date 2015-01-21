@@ -27,6 +27,7 @@ public class PlayerDeath : MonoBehaviour {
     {
         if (isDead)
         {
+            Debug.Log("Frogger Died");
             manager.LoseLife();
             Respawn();
         }

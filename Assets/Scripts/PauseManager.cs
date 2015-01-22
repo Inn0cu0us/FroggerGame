@@ -16,7 +16,12 @@ public class PauseManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	    if (Input.GetButtonDown("Submit"))
+	    if (isPaused && Input.GetKeyDown(KeyCode.Q))
+        {
+            Application.Quit();
+        }
+        
+        if (Input.GetButtonDown("Submit"))
         {            
             PauseAudio.clip = PauseClip;
             PauseAudio.Play();
@@ -24,7 +29,6 @@ public class PauseManager : MonoBehaviour {
             PauseCanvas.enabled = isPaused;
             int timeScale = isPaused ? 0 : 1;
             Time.timeScale = timeScale;
-
         }
 	}
 }

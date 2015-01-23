@@ -11,11 +11,6 @@ public class KillOnContact : MonoBehaviour {
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         playerDeath = player.GetComponent<PlayerDeath>();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     void OnTriggerEnter2D(Collider2D other)
     {
